@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HistoriesController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('histories', [HistoriesController::class, 'getAllHistories']);
+Route::get('history/{id}', [HistoriesController::class, 'getHistory']);
+Route::post('histories', [HistoriesController::class, 'createHistory']);
+Route::put('history/{id}', [HistoriesController::class, 'updateHistory']);
+Route::delete('history/{id}',[HistoriesController::class, 'deleteHistory']);
